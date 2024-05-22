@@ -7,5 +7,9 @@ edition = "2021"
 
 [dependencies]
 viuer = { version = "0.6", features=["sixel"] }
+term_size = "0.3.2"
+termion = "*"
+xterm-query = "0.4.0"
+crossterm = "0.27.0"
 
 
