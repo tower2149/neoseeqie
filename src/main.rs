@@ -6,9 +6,9 @@ use viuer::{print_from_file, Config};
 fn get_terminal_size(terminal_col: &mut usize, terminal_lines: &mut usize, terminal_pix_x: &mut usize, terminal_pix_y: &mut usize) {
 
     use crossterm::terminal::*;
-    enable_raw_mode();
+    let _ = enable_raw_mode();
     let Ok(response) = xterm_query::query("\x1b[14t", 100 as u64) else { process::exit(0x0100); };
-    disable_raw_mode();
+    let _ = disable_raw_mode();
     let terminal_size_pixel = response.replace("t", ";");
     let terminal_size_pixel = terminal_size_pixel.split(';').collect::<Vec<&str>>().clone();
     *terminal_pix_x = terminal_size_pixel[1].to_string().parse().unwrap();
